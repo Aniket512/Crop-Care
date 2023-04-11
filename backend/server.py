@@ -8,11 +8,18 @@ import requests
 import warnings
 import joblib
 import os
+from dotenv import load_dotenv
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import load_model
 from werkzeug.utils import secure_filename
 from data import disease_map, details_map
 from flask_cors import CORS, cross_origin
+
+load_dotenv()
+
+API_KEY = os.getenv('API_KEY')
+DRIVE_URL = os.getenv('DRIVE_URL')
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 
 warnings.filterwarnings('ignore')
 
@@ -33,8 +40,7 @@ fertilizer_recommendation_model = pickle.load(
 # Download Model File
 if not os.path.exists('model.h5'):
     print("Downloading model...")
-    url = "https://drive.google.com/uc?id=1JNggWQ9OJFYnQpbsFXMrVu-E-sR3VnCu&confirm=t"
-    r = requests.get(url, stream=True)
+    r = requests.get(DRIVE_URL, stream=True)
     with open('./model.h5', 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024):
             if chunk:
@@ -98,12 +104,12 @@ def members1():
         return jsonify({"crop": 'Enter Valid Details', "data": request.json})
 
     x = requests.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + district + ' ' + state +
-                     '.json?access_token=pk.eyJ1Ijoic2FpZ29ydGk4MSIsImEiOiJja3ZqY2M5cmYydXd2MnZwZ2VoZzl1ejNkIn0.CupGYvpb_LNtDgp7b-rZJg')
+                     '.json?access_token='+ACCESS_TOKEN)
 
     coordinates = x.json()['features'][0]['center']
 
     y = requests.get('https://api.openweathermap.org/data/2.5/weather?lat=' + str(
-        coordinates[1]) + '&lon=' + str(coordinates[0]) + '&appid=288a2f93f39e83cd21b86dba6b329fd8')
+        coordinates[1]) + '&lon=' + str(coordinates[0]) + '&appid=' + API_KEY)
 
     humidity = y.json()['main']['humidity']
     temprature = y.json()['main']['temp'] - 273.15
@@ -192,12 +198,12 @@ def members2():
         return jsonify({"crop": 'Enter Valid Data', "data": request.json})
 
     x = requests.get('https://api.mapbox.com/geocoding/v5/mapbox.places/' + district + ' ' + state +
-                     '.json?access_token=pk.eyJ1Ijoic2FpZ29ydGk4MSIsImEiOiJja3ZqY2M5cmYydXd2MnZwZ2VoZzl1ejNkIn0.CupGYvpb_LNtDgp7b-rZJg')
+                     '.json?access_token=' + ACCESS_TOKEN)
 
     coordinates = x.json()['features'][0]['center']
 
     y = requests.get('https://api.openweathermap.org/data/2.5/weather?lat=' + str(
-        coordinates[1]) + '&lon=' + str(coordinates[0]) + '&appid=46ce58f9349fcb4bdcf0e951999bbd24')
+        coordinates[1]) + '&lon=' + str(coordinates[0]) + '&appid=' + API_KEY)
 
     temperature = y.json()['main']['temp'] - 273.15
 
