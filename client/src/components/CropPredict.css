@@ -1,0 +1,163 @@
+.our-prediction .prediction-left-dec img {
+    width: 342px;
+    height: 311px;
+    left: 45px;
+    top: 120px;
+    position: absolute;
+    z-index: 0;
+}
+
+.our-prediction {
+    padding-top: 120px;
+    margin-top: 0px;
+    position: relative;
+}
+
+.our-prediction .section-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.our-prediction .section-heading h2 {
+    text-align: center;
+    margin: 0px 60px 0px 60px;
+    margin-bottom: -5px;
+    position: relative;
+    z-index: 1;
+}
+
+.our-prediction {
+    margin: 0px 15px;
+}
+
+
+.our-prediction .col-lg-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.our-prediction .item .thumb:hover .hover-effect {
+    bottom: 300px;
+    opacity: 1;
+}
+
+.our-prediction .item .thumb:hover img {
+    opacity: 0.8;
+}
+
+.our-prediction .item .hover-effect {
+    position: absolute;
+    background-image: url(../assets/images/hover-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all .5s;
+    bottom: -240px;
+    right: 30px;
+    width: 239px;
+    height: 210px;
+    opacity: 0;
+}
+
+.our-portfolio .item .hover-effect .inner-content {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    text-align: right;
+}
+
+.our-prediction .item .hover-effect .inner-content h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.our-prediction .item .hover-effect .inner-content span {
+    font-size: 15px;
+    color: #fff;
+}
+
+.our-prediction .item .thumb img {
+    border-radius: 20px;
+    transition: all .3s;
+    height: 400px;
+    width: 400px;
+}
+
+.crop-form .inputDiv {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    z-index: 2;
+    margin-bottom: 10px;
+}
+
+.crop-form .inputDiv label {
+    font-size: small;
+    color: #6f7482;
+}
+
+.crop-form .inputDiv input {
+    padding: 10px;
+    border: none;
+    background-color: #f8fafc;
+}
+
+.crop-form .inputDiv input:focus {
+    outline: none;
+}
+
+.crop-form .inputDiv input::placeholder {
+    color: #b8bcca;
+}
+
+.crop-form .inputDiv select {
+    padding: 10px;
+    border: none;
+    background-color: #f8fafc;
+}
+
+.crop-form .inputRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.crop-form button {
+    color: white;
+    background-color: #0a142f;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 10px 10px 91px -10px rgba(113, 150, 216, 0.75);
+    -webkit-box-shadow: 10px 10px 91px -10px rgba(113, 150, 216, 0.75);
+    -moz-box-shadow: 10px 10px 91px -10px rgba(113, 150, 216, 0.75);
+}
+
+.crop-form .resultDiv {
+    background-color: #d6e5f4;
+    padding: 10px;
+    margin-top: 25px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+input[type=file]::file-selector-button {
+    background-color: #fff;
+    color: #000;
+    border: 0px;
+    border-right: 1px solid #e5e5e5;
+    padding: 10px 15px;
+    margin-right: 20px;
+    transition: .5s;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background-color: #eee;
+    border: 0px;
+    border-right: 1px solid #e5e5e5;
+  }
+  
